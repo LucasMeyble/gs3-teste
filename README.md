@@ -80,8 +80,8 @@ INSERT INTO produtos_fornecedores (produto_id, fornecedor_id) VALUES
 Clone este repositório na sua máquina local:
 
 ```sh
-git clone https://github.com/usuario/meu_projeto.git
-cd meu_projeto
+git clone https://github.com/LucasMeyble/gs3-teste.git
+cd gs3-teste
 ```
 
 ### 2. Configurar o Docker
@@ -147,8 +147,8 @@ Se você pretende usar o MySQL localmente, instale o MySQL Server e configure um
 Clone este repositório na sua máquina local:
 
 ```sh
-git clone https://github.com/usuario/meu_projeto.git
-cd meu_projeto
+git clone https://github.com/LucasMeyble/gs3-teste.git
+cd gs3-teste
 ```
 
 ### 5. Configuração do Servidor Web (Apache)
