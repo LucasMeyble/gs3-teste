@@ -1,0 +1,52 @@
+CREATE TABLE fornecedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    referencia VARCHAR(255) NOT NULL UNIQUE,
+    preco DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE produtos_fornecedores (
+    produto_id INT,
+    fornecedor_id INT,
+    PRIMARY KEY (produto_id, fornecedor_id),
+    FOREIGN KEY (produto_id) REFERENCES produtos(id),
+    FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id)
+);
+
+CREATE TABLE vendas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data DATE NOT NULL,
+    cep VARCHAR(9) NOT NULL,
+    uf VARCHAR(2) NOT NULL,
+    cidade VARCHAR(255) NOT NULL,
+    bairro VARCHAR(255) NOT NULL,
+    rua VARCHAR(255) NOT NULL,
+    valor_total DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE vendas_produtos (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    venda_id INT NOT NULL,
+    produto_id INT NOT NULL,
+    quantidade INT NOT NULL,
+    preco_venda DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (venda_id) REFERENCES vendas(id),
+    FOREIGN KEY (produto_id) REFERENCES produtos(id)
+);
+
+-- Inserir dados de exemplo
+INSERT INTO fornecedores (nome) VALUES ('Fornecedor 1'), ('Fornecedor 2');
+
+INSERT INTO produtos (nome, referencia, preco) VALUES
+('Produto A', 'REF001', 10.00),
+('Produto B', 'REF002', 20.00);
+
+INSERT INTO produtos_fornecedores  (produto_id, fornecedor_id) VALUES
+(1, 1),
+(1, 2),
+(2, 1);
